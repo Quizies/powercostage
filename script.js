@@ -35,12 +35,29 @@ function animateNumber(element, finalValue) {
   }, 10);
 }
 
+// Function to change the flag with a fade animation
+function changeFlag(newFlag) {
+  const flagElement = document.getElementById('flag');
+  flagElement.classList.remove('fade-in'); // Reset animation
+  setTimeout(() => {
+    flagElement.src = newFlag;
+    flagElement.classList.add('fade-in'); // Trigger fade-in animation
+  }, 10);
+}
+
+// Event listener for country change
+document.getElementById('country').addEventListener('change', function () {
+  const selectedFlag = this.value; // Get the selected flag file name
+  changeFlag(selectedFlag);
+});
+
+// Event listener for form submission
 document.getElementById('calculator-form').addEventListener('submit', function (e) {
   e.preventDefault();
 
   // Get user input
   const kwh = parseFloat(document.getElementById('kwh').value);
-  const country = document.getElementById('country').value;
+  const country = document.getElementById('country').options[document.getElementById('country').selectedIndex].text;
 
   // Validate input
   if (kwh < 0 || isNaN(kwh)) {
