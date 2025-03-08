@@ -2,7 +2,8 @@
 body {
   font-family: 'Roboto', sans-serif;
   background: url('pictures/iraq.png') no-repeat center center fixed;
-  background-size: cover;
+  background-size: cover; /* Ensures the image covers the screen without stretching */
+  background-position: center; /* Centers the image */
   color: #fff;
   display: flex;
   justify-content: center;
@@ -11,7 +12,7 @@ body {
   margin: 0;
   position: relative;
   overflow: hidden;
-  transition: background-image 0.5s ease-in-out; /* Smooth background transition */
+  transition: background-image 0.5s ease-in-out; /* Smooth fade transition */
 }
 
 /* Subtle Background Overlay */
@@ -43,6 +44,7 @@ body::before {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
 
 h1 {
   margin-bottom: 0.5rem;
