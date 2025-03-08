@@ -4,18 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Electricity Cost Calculator - Iraq</title>
-  
-   <!-- Site Description -->
   <meta name="description" content="Calculate your electricity costs in local currency and USD with this easy-to-use calculator. Perfect for Iraq, USA, Germany, India, and more!">
-  <link rel="stylesheet" href="style.css">
-
-  <!-- Favicon (Picture in Browser Tab) -->
   <link rel="icon" type="image/png" href="favicon.png">
-  
+  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
+    <!-- Flag Display -->
+    <div id="flag-container">
+      <img id="flag" src="iraq.png" alt="Country Flag">
+    </div>
+
     <h1>Electricity Cost Calculator</h1>
     <p class="subtitle">Calculate the cost of electricity in your local currency and USD</p>
 
@@ -25,10 +25,10 @@
 
       <label for="country">Select Country:</label>
       <select id="country">
-        <option value="Iraq" selected>Iraq</option>
-        <option value="United States">United States</option>
-        <option value="Germany">Germany</option>
-        <option value="India">India</option>
+        <option value="iraq.png" selected>Iraq</option>
+        <option value="usa.png">United States</option>
+        <option value="germany.png">Germany</option>
+        <option value="india.png">India</option>
       </select>
 
       <button type="submit">Calculate</button>
