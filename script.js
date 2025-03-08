@@ -35,20 +35,16 @@ function animateNumber(element, finalValue) {
   }, 10);
 }
 
-// Function to change the flag with a fade animation
-function changeFlag(newFlag) {
-  const flagElement = document.getElementById('flag');
-  flagElement.classList.remove('fade-in'); // Reset animation
-  setTimeout(() => {
-    flagElement.src = newFlag;
-    flagElement.classList.add('fade-in'); // Trigger fade-in animation
-  }, 10);
+// Function to change the background flag with a fade transition
+function changeBackgroundFlag(flagFileName) {
+  const body = document.body;
+  body.style.backgroundImage = `url('pictures/${flagFileName}')`;
 }
 
 // Event listener for country change
 document.getElementById('country').addEventListener('change', function () {
   const selectedFlag = this.value; // Get the selected flag file name
-  changeFlag(selectedFlag);
+  changeBackgroundFlag(selectedFlag);
 });
 
 // Event listener for form submission
