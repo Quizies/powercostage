@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electricity Cost Calculator - Iraq</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>Electricity Cost Calculator</h1>
+    <p class="subtitle">Calculate the cost of electricity in your local currency and USD</p>
+
+    <form id="calculator-form">
+      <label for="kwh">Enter Kilowatt-Hour (kWh):</label>
+      <input type="number" id="kwh" placeholder="e.g., 100" required min="0" inputmode="numeric" pattern="[0-9]*">
+
+      <label for="country">Select Country:</label>
+      <select id="country">
+        <option value="Iraq" selected>Iraq</option>
+        <option value="United States">United States</option>
+        <option value="Germany">Germany</option>
+        <option value="India">India</option>
+      </select>
+
+      <button type="submit">Calculate</button>
+    </form>
+
+    <div id="result">
+      <h2>Cost:</h2>
+      <p id="cost-local">Cost in Local Currency: </p>
+      <p id="cost-usd">Cost in USD: </p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
