@@ -1,7 +1,7 @@
 /* General Styles */
 body {
   font-family: 'Roboto', sans-serif;
-  background: url('pictures/flag.png') no-repeat center center fixed;
+  background: url('pictures/iraq.png') no-repeat center center fixed;
   background-size: cover;
   color: #fff;
   display: flex;
@@ -11,6 +11,7 @@ body {
   margin: 0;
   position: relative;
   overflow: hidden;
+  transition: background-image 0.5s ease-in-out; /* Smooth background transition */
 }
 
 /* Subtle Background Overlay */
@@ -21,7 +22,7 @@ body::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent overlay */
   backdrop-filter: blur(10px); /* Blur effect */
   z-index: -1;
 }
