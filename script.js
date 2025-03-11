@@ -1,6 +1,6 @@
 // Embedded prices.json data
 const prices = {
-  "Iraq": { price: 0.545, currency: "IQD", symbol: "د.ع" },
+  "Iraq": { price: 0.5, currency: "IQD", symbol: "د.ع" },
   "United States": { price: 0.000005813, currency: "USD", symbol: "$" },
   "Germany": { price: 0.00001975, currency: "EUR", symbol: "€" },
   "India": { price: 0.000355, currency: "INR", symbol: "₹" }
