@@ -1,9 +1,9 @@
 // Embedded prices.json data
 const prices = {
-  "Iraq": { price: 101.4, currency: "IQD", symbol: "د.ع" },
-  "United States": { price: 0.011626, currency: "USD", symbol: "$" },
-  "Germany": { price: 0.3951, currency: "EUR", symbol: "€" },
-  "India": { price: 7.11, currency: "INR", symbol: "₹" }
+  "Iraq": { price: 0.545, currency: "IQD", symbol: "د.ع" },
+  "United States": { price: 0.000005813, currency: "USD", symbol: "$" },
+  "Germany": { price: 0.00001975, currency: "EUR", symbol: "€" },
+  "India": { price: 0.000355, currency: "INR", symbol: "₹" }
 };
 
 // Updated exchange rates (as of October 2023)
