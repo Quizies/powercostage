@@ -18,7 +18,15 @@ body {
   width: 50%; /* Compensate for the scaling to avoid horizontal scroll */
   height: 50vh; /* Set height to 50% of the viewport height */
   overflow: hidden; /* Prevent scrolling */
+}
 
+/* Media query for phones */
+@media only screen and (max-width: 600px) {
+  body {
+    transform: scale(1); /* Set scale to 1 for phones */
+    width: 100%; /* Full width for phones */
+    height: 100vh; /* Full height for phones */
+  }
 }
 
 body::before {
