@@ -251,9 +251,9 @@ button:hover {
 
 .logo-container {
   position: absolute;
-  top: 20px; /* Adjust this value to control the distance from the top */
+  top: 50%; /* Move the container to the middle vertically */
   left: 50%; /* Move the container to the middle horizontally */
-  transform: translateX(-50%); /* Center the container horizontally */
+  transform: translate(-50%, -50%); /* Center the container precisely */
   z-index: 2;
   text-align: center; /* Center the logo horizontally */
 }
