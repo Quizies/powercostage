@@ -1,7 +1,7 @@
 /* General Styles */
 body {
   font-family: 'Roboto', sans-serif;
-  background: url('pictures/iraq.png') no-repeat center center fixed;
+  background: url('pictures/iraq.png') no-repeat center center fixed; /* Default flag */
   background-size: cover;
   background-position: center;
   color: #fff;
@@ -12,15 +12,15 @@ body {
   margin: 0;
   position: relative;
   overflow: hidden;
-  transition: background-image 0.5s ease-in-out;
+  transition: background-image 0.5s ease-in-out; /* Smooth transition for background */
   transform: scale(2);
   transform-origin: top left;
   width: 50%; /* Compensate for the scaling to avoid horizontal scroll */
   height: 50vh; /* Set height to 50% of the viewport height */
   overflow: hidden; /* Prevent scrolling */
+
 }
 
-/* Subtle Background Overlay */
 body::before {
   content: '';
   position: absolute;
@@ -28,11 +28,16 @@ body::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+  backdrop-filter: blur(10px); /* Blur effect */
   z-index: -1;
+  transition: opacity 0.5s ease-in-out; /* Smooth transition for opacity */
 }
 
+/* Ensure the overlay is always visible */
+body.fading-background::before {
+  opacity: 1; /* Always show the overlay */
+}
 
 .container {
   background: rgba(0, 0, 0, 0.8);
