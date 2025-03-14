@@ -334,3 +334,69 @@ function animateCarbonFootprint(element, finalValue) {
     element.textContent = formatNumber(current);
   }, 10);
 }
+
+// Update the flag when a country is selected
+document.getElementById('country').addEventListener('change', (e) => {
+  const selectedFlag = e.target.value; // e.g., "iraq.png"
+  document.body.style.backgroundImage = `url('pictures/${selectedFlag}')`;
+});
+
+// Cost Calculator
+document.getElementById('calculator-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const kwh = parseFloat(document.getElementById('kwh').value);
+  const country = document.getElementById('country').options[document.getElementById('country').selectedIndex].text;
+
+  if (kwh < 0 || isNaN(kwh)) {
+    alert('Please enter a valid positive number for kWh.');
+    return;
+  }
+
+  const countryData = prices[country];
+  if (!countryData) {
+    alert('Price not found for selected country');
+    return;
+  }
+
+  const { price, currency, symbol } = countryData;
+  const costLocal = kwh * price;
+  const exchangeRate = exchangeRates[currency];
+  const costUSD = costLocal / exchangeRate;
+
+  // Animate the local cost
+  const costLocalElement = document.getElementById('cost-local').querySelector('.cost-number');
+  animateNumber(costLocalElement, costLocal);
+
+  // Animate the USD cost
+  const costUSDElement = document.getElementById('cost-usd').querySelector('.cost-number');
+  animateNumber(costUSDElement, costUSD);
+
+  // Update the text content
+  document.getElementById('cost-local').innerHTML = `Cost in ${currency}: <span class="cost-number">${formatNumber(costLocal)}</span> ${symbol}`;
+  document.getElementById('cost-usd').innerHTML = `Cost in USD: <span class="cost-number">${formatNumber(costUSD)}</span> $`;
+});
+
+document.getElementById('cost-calculator-btn').addEventListener('click', () => {
+  const selectedFlag = document.getElementById('country').value; // Get the currently selected flag
+  document.body.style.backgroundImage = `url('pictures/${selectedFlag}')`;
+  showSection('cost-calculator');
+});
+
+// Update the flag when a country is selected (for carbon footprint calculator)
+document.getElementById('country-carbon').addEventListener('change', (e) => {
+  const selectedFlag = e.target.value;
+
+  // Add a fading class to the body
+  document.body.classList.add('fading-background');
+
+  // Wait for the fade-out effect to complete
+  setTimeout(() => {
+    // Change the background image
+    document.body.style.backgroundImage = `url('pictures/${selectedFlag}')`;
+
+    // Remove the fading class after the transition
+    setTimeout(() => {
+      document.body.classList.remove('fading-background');
+    }, 500); // Match this duration with your CSS transition
+  }, 300); // Match this duration with your CSS transition
+});
