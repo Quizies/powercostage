@@ -251,11 +251,9 @@ button:hover {
 
 .logo-container {
   position: absolute;
-  top: 50%; /* Move the container to the middle vertically */
-  left: 50%; /* Move the container to the middle horizontally */
-  transform: translate(-50%, -50%); /* Center the container precisely */
+  top: 20px;
+  left: 20px;
   z-index: 2;
-  text-align: center; /* Center the logo horizontally */
 }
 
 .school-logo {
