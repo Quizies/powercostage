@@ -3,47 +3,153 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Electricity Cost Calculator - Iraq</title>
-  <meta name="description" content="Calculate your electricity costs in local currency and USD with this easy-to-use calculator. Perfect for Iraq, USA, Germany, India, and more!">
+  <title>Electricity Tools</title>
+  <meta name="description" content="Calculate electricity costs, convert power to ampere, and more!">
   <link rel="icon" type="image/png" href="favicon.png">
-  
-  <!-- Preload Flag Images -->
   <link rel="preload" href="pictures/iraq.png" as="image">
   <link rel="preload" href="pictures/usa.png" as="image">
   <link rel="preload" href="pictures/germany.png" as="image">
   <link rel="preload" href="pictures/india.png" as="image">
-  
-  <!-- Stylesheets -->
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
+  <!-- School Logo -->
+  <div class="logo-container">
+    <img src="pictures/logo.png" alt="School Logo" class="school-logo">
+  </div>
+
+  <!-- Main Menu -->
+  <div class="container main-menu">
+    <h1>Electricity Tools</h1>
+    <button id="cost-calculator-btn">Power Cost Calculator</button>
+    <button id="power-to-ampere-btn">Power to Ampere Converter</button>
+    <button id="another-converter-btn">Carbon Footprint Calculator</button>
+  </div>
+
+  <!-- Power Cost Calculator Section -->
+  <div class="container cost-calculator hidden">
     <h1>Electricity Cost Calculator</h1>
     <p class="subtitle">Calculate the cost of electricity in your local currency and USD</p>
-
     <form id="calculator-form">
       <label for="kwh">Enter Kilowatt-Hour (kWh):</label>
       <input type="number" id="kwh" placeholder="e.g., 100" required min="0" inputmode="numeric" pattern="[0-9]*">
-
       <label for="country">Select Country:</label>
       <select id="country">
         <option value="iraq.png" selected>Iraq</option>
         <option value="usa.png">United States</option>
         <option value="germany.png">Germany</option>
         <option value="india.png">India</option>
+        <!-- Add more countries as needed -->
       </select>
-
       <button type="submit">Calculate</button>
     </form>
-
     <div id="result">
       <h2>Cost:</h2>
-      <p id="cost-local">Cost in Local Currency: </p>
-      <p id="cost-usd">Cost in USD: </p>
+      <p id="cost-local">Cost in Local Currency: <span class="cost-number">0.00</span></p>
+      <p id="cost-usd">Cost in USD: <span class="cost-number">0.00</span> $</p>
     </div>
+    <button id="back-to-menu">Back to Menu</button>
+  </div>
+
+  <!-- Power to Ampere Converter Section -->
+  <div class="container power-to-ampere hidden">
+    <h1>Power to Ampere Converter</h1>
+    <form id="ampere-form">
+      <label for="power">Enter Power (Watts):</label>
+      <input type="number" id="power" placeholder="e.g., 100" required min="0">
+      <label for="voltage">Voltage (Volts):</label>
+      <input type="number" id="voltage" value="220" disabled> <!-- Always 220V -->
+      <button type="submit">Convert</button>
+    </form>
+    <div id="ampere-result">
+      <p id="ampere-value">Ampere: </p>
+    </div>
+    <button id="back-to-menu">Back to Menu</button>
+  </div>
+
+  <!-- Another Converter Section -->
+  <div class="container another-converter hidden">
+    <h1>Carbon Footprint Calculator</h1>
+    <p class="subtitle">Estimate your carbon emissions from electricity usage</p>
+    <form id="carbon-footprint-form">
+      <label for="electricity-usage">Monthly Electricity Usage (kWh):</label>
+      <input type="number" id="electricity-usage" placeholder="e.g., 300" required min="0">
+      <label for="country-carbon">Select Country:</label>
+      <select id="country-carbon">
+        <option value="iraq.png" selected>Iraq</option>
+        <option value="usa.png">United States</option>
+        <option value="germany.png">Germany</option>
+        <option value="india.png">India</option>
+        <option value="canada.png">Canada</option>
+        <option value="uk.png">United Kingdom</option>
+        <option value="france.png">France</option>
+        <option value="japan.png">Japan</option>
+        <option value="china.png">China</option>
+        <option value="brazil.png">Brazil</option>
+        <option value="australia.png">Australia</option>
+        <option value="southkorea.png">South Korea</option>
+        <option value="russia.png">Russia</option>
+        <option value="italy.png">Italy</option>
+        <option value="spain.png">Spain</option>
+        <option value="mexico.png">Mexico</option>
+        <option value="saudiarabia.png">Saudi Arabia</option>
+        <option value="uae.png">United Arab Emirates</option>
+        <option value="turkey.png">Turkey</option>
+        <option value="southafrica.png">South Africa</option>
+        <option value="egypt.png">Egypt</option>
+        <option value="nigeria.png">Nigeria</option>
+        <option value="argentina.png">Argentina</option>
+        <option value="pakistan.png">Pakistan</option>
+        <option value="indonesia.png">Indonesia</option>
+        <option value="thailand.png">Thailand</option>
+        <option value="vietnam.png">Vietnam</option>
+        <option value="philippines.png">Philippines</option>
+        <option value="malaysia.png">Malaysia</option>
+      </select>
+      <button type="submit">Calculate</button>
+    </form>
+    <div id="carbon-footprint-result">
+      <h2>Carbon Emissions:</h2>
+      <p id="monthly-emissions">Monthly Emissions: <span class="carbon-number">0.00</span> kg CO₂</p>
+      <p id="yearly-emissions">Yearly Emissions: <span class="carbon-number">0.00</span> kg CO₂</p>
+    </div>
+    <button id="back-to-menu">Back to Menu</button>
+  </div>
+
+  <!-- Admin Panel -->
+  <div class="admin-panel hidden">
+    <h2>Admin Panel</h2>
+    <form id="admin-form">
+      <label for="country-select">Select Country:</label>
+      <select id="country-select">
+        <option value="Iraq">Iraq</option>
+        <option value="United States">United States</option>
+        <option value="Germany">Germany</option>
+        <option value="India">India</option>
+        <!-- Add more countries as needed -->
+      </select>
+      <label for="price">New Price (per kWh):</label>
+      <input type="number" id="price" step="0.001" required>
+      <label for="currency">Currency:</label>
+      <input type="text" id="currency" required>
+      <label for="symbol">Currency Symbol:</label>
+      <input type="text" id="symbol" required>
+      <button type="submit">Update</button>
+    </form>
+    <button id="close-admin-panel">Close Admin Panel</button>
+  </div>
+
+  <!-- Credits Section -->
+  <div class="credits">
+    <h3>:فريق العمل</h3>
+    <p class="lead-dev">علي سيف: رئيس المطورين•</p>
+    <p class="dev">حسين علي: مطور•</p>
+    <p class="designer">علي مهج: مصمم•</p>
+    <p class="designer">علي حسين: مصمم•</p>
+    <p class="idea-owner">مصطفى عبد الستار: صاحب الفكرة•</p>
   </div>
 
   <script src="script.js"></script>
 </body>
-</html>
+</html>`
