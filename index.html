@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,14 +26,19 @@
   </div>
 
   <!-- Power Cost Calculator Section -->
-  <div class="container cost-calculator hidden">
+<div class="container cost-calculator hidden">
   <h1>Electricity Cost Calculator</h1>
   <p class="subtitle">Calculate the cost of electricity in your local currency and USD</p>
-  <!-- Flag Container -->
 
   <form id="calculator-form">
-    <label for="kwh">Enter Kilowatt-Hour (kWh):</label>
-    <input type="number" id="kwh" placeholder="e.g., 100" required min="0" inputmode="numeric" pattern="[0-9]*">
+    <!-- Old Value Input -->
+    <label for="old-kwh">Enter Old Kilowatt-Hour (kWh):</label>
+    <input type="number" id="old-kwh" placeholder="e.g., 100" required min="0" inputmode="numeric" pattern="[0-9]*">
+
+    <!-- New Value Input -->
+    <label for="new-kwh">Enter New Kilowatt-Hour (kWh):</label>
+    <input type="number" id="new-kwh" placeholder="e.g., 200" required min="0" inputmode="numeric" pattern="[0-9]*">
+
     <label for="country">Select Country:</label>
     <select id="country">
       <option value="iraq.png" selected>Iraq</option>
@@ -67,6 +73,7 @@
     </select>
     <button type="submit">Calculate</button>
   </form>
+
   <div id="result">
     <h2>Cost:</h2>
     <p id="cost-local">Cost in Local Currency: <span class="cost-number">0.00</span></p>
@@ -164,14 +171,14 @@
   </div>
 
   <!-- Credits Section -->
-  <div class="credits">
-    <h3>:فريق العمل</h3>
-    <p class="lead-dev">علي سيف: رئيس المطورين•</p>
-    <p class="dev">حسين علي: مطور•</p>
-    <p class="designer">علي مهج: مصمم•</p>
-    <p class="designer">علي حسين: مصمم•</p>
-    <p class="idea-owner">مصطفى عبد الستار: صاحب الفكرة•</p>
-  </div>
+<div class="credits">
+  <h3>:فريق العمل</h3>
+  <p class="lead-dev">علي سيف</p>
+  <p class="dev">حسين علي</p>
+  <p class="designer">علي مهج</p>
+  <p class="designer">علي حسين</p>
+  <p class="idea-owner">مصطفى عبد الستار</p>
+</div>
 
   <script src="script.js"></script>
 </body>
