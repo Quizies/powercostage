@@ -32,7 +32,7 @@ const carbonEmissionFactors = {
 };
 
 const prices = {
-  "Iraq": { price: 18.8, currency: "IQD", symbol: "د.ع" },
+  "Iraq": { price: 18.82845188284519, currency: "IQD", symbol: "د.ع" },
   "United States": { price: 0.1626, currency: "USD", symbol: "$" },
   "Germany": { price: 0.3951, currency: "EUR", symbol: "€" },
   "India": { price: 7.11, currency: "INR", symbol: "₹" },
@@ -245,22 +245,33 @@ function formatNumber(number) {
 
 document.getElementById('calculator-form').addEventListener('submit', (e) => {
   e.preventDefault();
-  const kwh = parseFloat(document.getElementById('kwh').value);
-  const country = document.getElementById('country').options[document.getElementById('country').selectedIndex].text;
 
-  if (kwh < 0 || isNaN(kwh)) {
-    alert('Please enter a valid positive number for kWh.');
+  // Get old and new kWh values
+  const oldKwh = parseFloat(document.getElementById('old-kwh').value);
+  const newKwh = parseFloat(document.getElementById('new-kwh').value);
+
+  // Validate inputs
+  if (oldKwh < 0 || newKwh < 0 || isNaN(oldKwh) || isNaN(newKwh) || newKwh < oldKwh) {
+    alert('Please enter valid positive numbers for kWh, and ensure the new value is greater than the old value.');
     return;
   }
 
+  // Calculate the difference
+  const kwhDifference = newKwh - oldKwh;
+
+  // Get selected country
+  const country = document.getElementById('country').options[document.getElementById('country').selectedIndex].text;
+
+  // Fetch country data
   const countryData = prices[country];
   if (!countryData) {
     alert('Price not found for selected country');
     return;
   }
 
+  // Calculate costs
   const { price, currency, symbol } = countryData;
-  const costLocal = kwh * price;
+  const costLocal = kwhDifference * price;
   const exchangeRate = exchangeRates[currency];
   const costUSD = costLocal / exchangeRate;
 
@@ -399,4 +410,28 @@ document.getElementById('country-carbon').addEventListener('change', (e) => {
       document.body.classList.remove('fading-background');
     }, 500); // Match this duration with your CSS transition
   }, 300); // Match this duration with your CSS transition
+});
+
+const { ipcRenderer } = require('electron');
+
+// Listen for Ctrl + = or Ctrl + Scroll
+document.addEventListener('keydown', (event) => {
+  if (event.ctrlKey) {
+    if (event.key === '=') { // Zoom in with Ctrl + =
+      ipcRenderer.send('zoom-in');
+    } else if (event.key === '-') { // Zoom out with Ctrl + -
+      ipcRenderer.send('zoom-out');
+    }
+  }
+});
+
+document.addEventListener('wheel', (event) => {
+  if (event.ctrlKey) {
+    event.preventDefault(); // Prevent default browser zoom
+    if (event.deltaY < 0) {
+      ipcRenderer.send('zoom-in'); // Zoom in
+    } else if (event.deltaY > 0) {
+      ipcRenderer.send('zoom-out'); // Zoom out
+    }
+  }
 });
